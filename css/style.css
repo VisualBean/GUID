@@ -15,3 +15,8 @@ body {
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
 }
+#copyToClipboard {
+	border-radius: 0px;
+    border-right: 0px;
+    border-left: 0px;
+}

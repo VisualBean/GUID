@@ -17,19 +17,20 @@
 <body>
 
   <div class="columns is-centered ">
-  <div class="column is-10 is-vertical-centered">
+  <div style="min-width:590px;" class="column is-10 is-vertical-centered">
     <div class="field has-addons" >
       <button id="generateButton" class="control button is-medium is-primary is-rounded">
         Generate
       </button>
+	  <a id="copyToClipboard" class="button control is-medium">
+		<span class="icon is-medium">
+		  <i class="fa fa-clipboard"></i>
+		</span>
+	  </a>
       <div class="control" style="width:100%">
         <input id="generator" class="input is-medium is-rounded" type="text" readonly placeholder="GUID goes here">
       </div>
-       <a id="copyToClipboard" class="button control is-medium">
-    <span class="icon is-medium">
-      <i class="fa fa-clipboard"></i>
-    </span>
-  </a>
+       
     </div>
     
   </div>

@@ -1,0 +1,17 @@
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+}
+.columns {
+  height: 100%;
+}
+.columns.is-centered {
+   justify-content: center;
+   align-items: center;
+}
+#generateButton.is-rounded {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}

@@ -4,6 +4,9 @@ html {
 body {
   height: 100%;
 }
+#GUIDGenerator {
+  height: 100%;
+}
 .columns {
   height: 100%;
 }
@@ -14,9 +17,4 @@ body {
 #generateButton.is-rounded {
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
-}
-#copyToClipboard {
-	border-radius: 0px;
-    border-right: 0px;
-    border-left: 0px;
 }

@@ -1,20 +1,45 @@
-$("#generator").val(generateUUID());
-$("#copyToClipboard").click(function(){
-  $("#generator").select();
-  document.execCommand("copy")
-});
-$("#generateButton").click(function() {
-  $("#generator").val(generateUUID());
-});
-
-function generateUUID () { // Public Domain/MIT
-    var d = new Date().getTime();
-    if (typeof performance !== 'undefined' && typeof performance.now === 'function'){
-        d += performance.now(); //use high-precision timer if available
+var GuidGenerator = new Vue({
+  el: '#GUIDGenerator',
+  mounted() {
+    this.GUID = this.generateUUID();
+  },
+  data: {
+    isUpper: false,
+    withHyphen: true,
+    GUID: this.generateUUID,
+  },
+  methods: {
+    copyToClipboard(){
+      this.$refs.generator.focus();
+      document.execCommand("copy");
+    },
+    createNewUUID() {
+      this.GUID = this.generateUUID();
+    },
+    generateUUID() { // Public Domain/MIT
+        var d = new Date().getTime();
+        if (typeof performance !== 'undefined' && typeof performance.now === 'function'){
+            d += performance.now(); //use high-precision timer if available
+        }
+        var newGuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = (d + Math.random() * 16) % 16 | 0;
+            d = Math.floor(d / 16);
+            return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+        });
+        
+        return newGuid;
     }
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-        var r = (d + Math.random() * 16) % 16 | 0;
-        d = Math.floor(d / 16);
-        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-    });
-}
+  },
+  computed: {
+   shownUUID() {
+     var newGuid = this.GUID;
+     if(this.isUpper === true) {
+          newGuid = newGuid.toUpperCase();
+        }
+     if(this.withHyphen === false) {
+       newGuid = newGuid.replace(/[-]/g,"");
+     }
+     return newGuid;
+   },
+  }
+});

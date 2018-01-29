@@ -8,6 +8,7 @@
   
   <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css'>
 <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
+<link rel='stylesheet prefetch' href='https://cdn.jsdelivr.net/npm/bulma-checkradio@0.1.5/bulma-checkradio.min.css'>
 
       <link rel="stylesheet" href="css/style.css">
 
@@ -16,26 +17,37 @@
 
 <body>
 
-  <div class="columns is-centered ">
-  <div style="min-width:590px;" class="column is-5 is-vertical-centered">
+  <div id="GUIDGenerator">
+ <div class="columns is-centered ">
+  <div style="min-width:625px;" class="column is-5 is-vertical-centered">
     <div class="field has-addons" >
-      <button id="generateButton" class="control button is-medium is-primary is-rounded">
+      <button id="generateButton" v-on:click.prevent="createNewUUID()" class="control button is-medium is-primary is-rounded">
         Generate
       </button>
-	  <a id="copyToClipboard" class="button control is-medium">
-		<span class="icon is-medium">
-		  <i class="fa fa-clipboard"></i>
-		</span>
-	  </a>
+         <a id="copyToClipboard" v-on:click.prevent="copyToClipboard" class="button control is-medium">
+    <span class="icon">
+      <i class="fa fa-clipboard"></i>
+    </span>
+  </a>
       <div class="control" style="width:100%">
-        <input id="generator" class="input is-medium is-rounded" type="text" readonly placeholder="GUID goes here">
+        <input v-on:focus="$event.target.select()" ref="generator" v-model="shownUUID" id="generator" class="input is-medium is-rounded" type="text" readonly placeholder="GUID goes here">
       </div>
-       
-    </div>
     
+    </div>
+    <div class="field is-grouped">
+      <input class="is-checkradio" id="hyphenCheck" v-model="withHyphen" type="checkbox">
+  <label for="hyphenCheck" class="control checkbox">
+    Hyphens
+  </label>
+   <input class="is-checkradio" id="upperCheck" v-model="isUpper" type="checkbox">
+   <label for="upperCheck" class="control checkbox">
+  UpperCase
+</label>
+</div>
   </div>
 </div>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js'></script>
 
   
 

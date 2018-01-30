@@ -1,7 +1,16 @@
+Vue.use(Buefy.default)
+
 var GuidGenerator = new Vue({
   el: '#GUIDGenerator',
   mounted() {
-    this.GUID = this.generateUUID();
+   this.GUID = this.generateUUID();
+    const vm = this;
+    window.addEventListener('keyup', function(event) {  
+      // If down arrow was pressed...
+      if (event.keyCode == 71) { 
+        vm.GUID = vm.generateUUID();
+      }
+    });
   },
   data: {
     isUpper: false,
@@ -12,6 +21,7 @@ var GuidGenerator = new Vue({
     copyToClipboard(){
       this.$refs.generator.focus();
       document.execCommand("copy");
+      this.$toast.open('Copied!')
     },
     createNewUUID() {
       this.GUID = this.generateUUID();

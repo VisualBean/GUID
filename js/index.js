@@ -1,8 +1,8 @@
-Vue.use(Buefy.default)
+Vue.use(Buefy.default);
 
 var GuidGenerator = new Vue({
   el: '#GUIDGenerator',
-  mounted() {
+  mounted: function() {
    this.GUID = this.generateUUID();
     const vm = this;
     window.addEventListener('keyup', function(event) {  
@@ -18,15 +18,15 @@ var GuidGenerator = new Vue({
     GUID: this.generateUUID,
   },
   methods: {
-    copyToClipboard(){
+    copyToClipboard: function(){
       this.$refs.generator.focus();
       document.execCommand("copy");
       this.$toast.open('Copied!')
     },
-    createNewUUID() {
+    createNewUUID: function() {
       this.GUID = this.generateUUID();
     },
-    generateUUID() { // Public Domain/MIT
+    generateUUID: function() { // Public Domain/MIT
         var d = new Date().getTime();
         if (typeof performance !== 'undefined' && typeof performance.now === 'function'){
             d += performance.now(); //use high-precision timer if available
@@ -41,7 +41,7 @@ var GuidGenerator = new Vue({
     }
   },
   computed: {
-   shownUUID() {
+   shownUUID: function() {
      var newGuid = this.GUID;
      if(this.isUpper === true) {
           newGuid = newGuid.toUpperCase();

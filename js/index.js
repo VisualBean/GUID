@@ -3,12 +3,22 @@ Vue.use(Buefy.default);
 var GuidGenerator = new Vue({
   el: '#GUIDGenerator',
   mounted: function() {
-   this.GUID = this.generateUUID();
+    this.GUID = this.generateUUID();
     const vm = this;
     window.addEventListener('keyup', function(event) {  
-      // If down arrow was pressed...
-      if (event.keyCode == 71) { 
-        vm.GUID = vm.generateUUID();
+      switch(event.keyCode) {
+        case 67: // c
+           vm.copyToClipboard();
+          break;
+        case 71: // g
+          vm.GUID = vm.generateUUID();
+          break;
+        case 72: // h
+          vm.withHyphen = !vm.withHyphen;
+          break;
+        case 85: // u
+          vm.isUpper = !vm.isUpper;
+          break;
       }
     });
   },

@@ -26,7 +26,6 @@ var GuidGenerator = new Vue({
     isUpper: false,
     withHyphen: true,
     GUID: this.generateUUID,
-    title: 'A vuejs guid generator',
   },
   methods: {
     copyToClipboard: function(){
@@ -56,14 +55,14 @@ var GuidGenerator = new Vue({
      var newGuid = this.GUID;
      var name = 'g-u-i-d';
      if(this.isUpper === true) {
-          name = name.toUpperCase();
-          newGuid = newGuid.toUpperCase();
-        }
+        name = name.toUpperCase();
+        newGuid = newGuid.toUpperCase();
+      }
      if(this.withHyphen === false) {
        newGuid = newGuid.replace(/[-]/g,"");
        name = name.replace(/[-]/g,"");
      }
-     this.title = `A vuejs ${name} generator`;
+     document.title = `A vuejs ${name} generator`;
      return newGuid;
    },
   }
